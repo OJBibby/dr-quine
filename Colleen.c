@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Colleen.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: obibby <obibby@student.42wolfsburg.de>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 17:57:51 by obibby            #+#    #+#             */
-/*   Updated: 2025/01/14 20:29:54 by obibby           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
 
+// This is a comment
 void blah(char *str)
 {
     putchar(' '); putchar(' '); putchar(' '); putchar(' ');
@@ -33,23 +22,24 @@ int main()
 {
     // This is another comment
     char *a[] = {
-    "/* ************************************************************************** */\n",
-    "/*                                                                            */\n",
-    "/*                                                        :::      ::::::::   */\n",
-    "/*   Colleen.c                                          :+:      :+:    :+:   */\n",
-    "/*                                                    +:+ +:+         +:+     */\n",
-    "/*   By: obibby <obibby@student.42wolfsburg.de>     +#+  +:+       +#+        */\n",
-    "/*                                                +#+#+#+#+#+   +#+           */\n",
-    "/*   Created: 2025/01/13 17:57:51 by obibby            #+#    #+#             */\n",
-    "/*   Updated: 2025/01/13 18:08:17 by obibby           ###   ########.fr       */\n",
-    "/*                                                                            */\n",
-    "/* ************************************************************************** */\n",
-    "\n",
     "#include <stdio.h>\n",
     "\n",
-    "void blah()\n",
+    "// This is a comment\n",
+    "void blah(char *str)\n",
     "{\n",
-    "   printf(\"\");",
+    "    putchar(' '); putchar(' '); putchar(' '); putchar(' ');\n",
+    "    putchar('\\\"');\n",
+    "    for (; *str; str++) {\n",
+    "        if (*str == '\\n') {\n",
+    "            putchar('\\\\'); putchar('n');\n",
+    "        } else if (*str == '\\\\') {\n",
+    "            putchar('\\\\'); putchar('\\\\');\n",
+    "        } else if (*str == '\\\"') {\n",
+    "            putchar('\\\\'); putchar('\\\"');\n",
+    "        } else\n",
+    "            putchar(*str);\n",
+    "    }\n",
+    "    putchar('\\\"'); putchar(','); putchar('\\n');\n",
     "}\n",
     "\n",
     "int main()\n",
@@ -59,15 +49,54 @@ int main()
     NULL
     };
     char *b[] = {
-        "};\n"
-        "char *b[] = {",
-        NULL
+    "    };\n",
+    "    char *b[] = {\n",
+    "    }, **x;\n",
+    "    for (x = a; *x; x++) {\n",
+    "        printf(\"%s\", *x);\n",
+    "    };\n",
+    "    for (x = a; *x; x++) {\n",
+    "        blah(*x);\n",
+    "    };\n",
+    "    printf(\"    NULL\\n\");\n",
+    "    x = b;\n",
+    "    printf(\"%s\", *x);\n",
+    "    x++;\n",
+    "    printf(\"%s\", *x);\n",
+    "    x++;\n",
+    "    for (x = b; *x; x++) {\n",
+    "        blah(*x);\n",
+    "    };\n",
+    "    printf(\"    NULL\\n\");\n",
+    "    x = b;\n",
+    "    x++;\n",
+    "    x++;\n",
+    "    for (; *x; x++) {\n",
+    "        printf(\"%s\", *x);\n",
+    "    };\n",
+    "}\n",
+    NULL
     }, **x;
     for (x = a; *x; x++) {
         printf("%s", *x);
-    }
+    };
     for (x = a; *x; x++) {
         blah(*x);
-    }
-    blah(*b);
+    };
+    printf("    NULL\n");
+    x = b;
+    printf("%s", *x);
+    x++;
+    printf("%s", *x);
+    x++;
+    for (x = b; *x; x++) {
+        blah(*x);
+    };
+    printf("    NULL\n");
+    x = b;
+    x++;
+    x++;
+    for (; *x; x++) {
+        printf("%s", *x);
+    };
 }
