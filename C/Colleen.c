@@ -1,6 +1,9 @@
 #include <stdio.h>
 
-// This is a comment
+/*
+    This program will print its own source when run.
+*/
+
 void blah(char *str)
 {
     putchar(' '); putchar(' '); putchar(' '); putchar(' ');
@@ -20,11 +23,16 @@ void blah(char *str)
 
 int main()
 {
-    // This is another comment
+    /*
+        This program will print its own source when run.
+    */
     char *a[] = {
     "#include <stdio.h>\n",
     "\n",
-    "// This is a comment\n",
+    "/*\n",
+    "    This program will print its own source when run.\n",
+    "*/\n",
+    "\n",
     "void blah(char *str)\n",
     "{\n",
     "    putchar(' '); putchar(' '); putchar(' '); putchar(' ');\n",
@@ -44,7 +52,9 @@ int main()
     "\n",
     "int main()\n",
     "{\n",
-    "    // This is another comment\n",
+    "    /*\n",
+    "        This program will print its own source when run.\n",
+    "    */\n",
     "    char *a[] = {\n",
     NULL
     };
